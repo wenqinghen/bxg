@@ -1,0 +1,27 @@
+.aside{
+    width: 180px;
+    top:0;
+    bottom:0;
+    background-color: paleturquoise;
+    position:fixed;
+}
+.aside>.profile{
+    height: 150px;
+    background-color: palegoldenrod;
+    overflow: hidden;
+}
+.aside>.profile>img{
+    display: block;
+    margin:20px auto 0;
+}
+.aside>.profile>h3{
+    margin-top: 10px;
+}
+.content{
+    position: absolute;
+    min-height: 2000px;
+    background-color: hotpink;
+    left: 180px;
+    right:0;
+    top:0;
+}
