@@ -9,7 +9,8 @@ require.config({
         jquery:"lib/jquery-2.1.4",
         bootstrap:"../assets/bootstrap/js/bootstrap.min",
         art:"lib/template-web",
-        text:"lib/text"
+        text:"lib/text",
+        tpls:"../tpls"
     },
     shim:{
         bootstrap:{
@@ -19,7 +20,7 @@ require.config({
 });
 //菜单切换  点击菜单项，完成内容的切换
 
-require(["jquery","teacher"],function($,teacher){
+require(["jquery","teacher","bootstrap"],function($,teacher){
 
 
     $(".list-group").on('click','a',function(){

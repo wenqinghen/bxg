@@ -5,7 +5,7 @@
             <li class="active">讲师列表</li>
         </ol>
         <div class="col-md-1 col-md-offset-10">
-            <button class="btn btn-success">添加讲师</button>
+            <button class="btn btn-success btn-add">添加讲师</button>
         </div>
         <table class="table table-bordered table-hover">
             <thead>
@@ -32,7 +32,7 @@
                         <td>{{$value.tc_status==0?"启用":"注销"}}</td>
                         <td>{{$value.tc_join_date}}</td>
                         <td>{{$value.tc_birthday}}</td>
-                        <td>
+                        <td tc_id="{{$value.tc_id}}">
                             <button class="btn btn-success btn-show">查看</button>
                             <button class="btn btn-primary">编辑</button>
                             <button class="btn btn-primary">{{$value.tc_status==1?"启用":"注销"}}</button>
