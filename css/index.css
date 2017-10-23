@@ -1,13 +1,14 @@
 .aside{
-    width: 180px;
+    width: 200px;
     top:0;
     bottom:0;
     background-color: paleturquoise;
     position:fixed;
+
 }
 .aside>.profile{
     height: 150px;
-    background-color: palegoldenrod;
+    background-color: lightblue;
     overflow: hidden;
 }
 .aside>.profile>img{
@@ -20,8 +21,13 @@
 .content{
     position: absolute;
     min-height: 2000px;
-    background-color: hotpink;
-    left: 180px;
+    left: 200px;
     right:0;
     top:0;
+}
+.panel-head{
+    background-color: lightblue;
+}
+.breadcrumb{
+    background-color: lightblue;
 }

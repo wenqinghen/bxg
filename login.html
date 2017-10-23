@@ -31,6 +31,7 @@
 </div>
 
 <script src="js/lib/jquery-2.1.4.js"></script>
+<script src="js/lib/jquery.cookie.js"></script>
 <script>
     //阻止跳转
     $("form").on("submit",function(e){
@@ -44,6 +45,14 @@
             data:formData,
             success:function(res){
                 if(res.code == 200){
+
+                    var result = res.result;
+                    var JsonData = JSON.stringify(result);
+                    //  sessionStorage.setItem("data",JsonData);
+                    $.cookie("JsonData",JsonData,{
+                        expires:3
+                    })
+
                     location.href = "index.html"
                 }
             },

@@ -10,7 +10,8 @@ require.config({
         bootstrap:"../assets/bootstrap/js/bootstrap.min",
         art:"lib/template-web",
         text:"lib/text",
-        tpls:"../tpls"
+        tpls:"../tpls",
+        cookie:"lib\jquery.cookie.js"
     },
     shim:{
         bootstrap:{
@@ -20,24 +21,51 @@ require.config({
 });
 //菜单切换  点击菜单项，完成内容的切换
 
-require(["jquery","teacher","bootstrap"],function($,teacher){
+require(["jquery","teacher","sort","course","bootstrap","cookie"],function($,teacher,sort,course){
 
+    //var JsonData = sessionStorage.getItem("data");
+    var JsonData = $.cookie("JsonData");
+    if(!JsonData) return location.href = "login.html"
+
+    var objData = JSON.parse(JsonData);
+    $(".aside img").attr('src',objData.tc_avatar)
+    $(".aside .name").text(objData.tc_name);
+
+
+    //实现退出功能
+    $(".logout").on("click",function(e){
+        //阻止事件跳转
+        e.preventDefault();
+        //ajax告知服务器推出了
+        $.ajax({
+            url:"/api/logout",
+            type:"post",
+            success:function(res){
+                if(res.code != 200) throw new Error(res.msg);
+                //告知之后删除cookie
+                $.removeCookie("JsonData");
+                location.href = "login.html";
+
+            }
+        })
+    })
 
     $(".list-group").on('click','a',function(){
         var value = $(this).attr('v');
-        console.log(value)
+        //console.log(value)
         switch (value){
             case "teacher":
                 teacher();
                 break;
             case "course":
-                $(".main").html("课程管理");
+
+                course();
                 break;
             case "courseAdd":
                 $(".main").html("添加课程");
                 break;
             case "sort":
-                $(".main").html("课程分类");
+                sort();
                 break;
             case "chart":
                 $(".main").html("图表统计");
