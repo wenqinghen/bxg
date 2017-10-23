@@ -10,8 +10,8 @@ require.config({
         bootstrap:"../assets/bootstrap/js/bootstrap.min",
         art:"lib/template-web",
         text:"lib/text",
-        tpls:"../tpls",
-        cookie:"lib\jquery.cookie.js"
+        cookie:"lib/jquery.cookie",
+        tpls:"../tpls"
     },
     shim:{
         bootstrap:{
