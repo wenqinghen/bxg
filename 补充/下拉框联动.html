@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<select name="" id="s1">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+</select>
+<select name="" id="s2">
+
+</select>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    $("#s1").on("change",function(){
+        //获取数据
+        var id = $(this).val();
+        $.ajax({
+            url:"/api/category/child",
+            type:"get",
+            data:{cg_id:id},
+            success:function(res){
+                console.log(res);
+                //创建option标签，放在select中去
+                var str = "";
+                res.result.forEach(function(value){
+                    str += '<option value='+value.cg_id+'>'+value.cg_name+'</option>'
+                })
+
+                $("#s2").html(str);
+            }
+        })
+    })
+</script>
+</body>
+</html>

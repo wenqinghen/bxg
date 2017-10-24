@@ -10,18 +10,23 @@ require.config({
         bootstrap:"../assets/bootstrap/js/bootstrap.min",
         art:"lib/template-web",
         text:"lib/text",
+        tpls:"../tpls",
         cookie:"lib/jquery.cookie",
-        tpls:"../tpls"
+        uploadify:"../assets/uploadify/jquery.uploadify.min"
     },
     shim:{
         bootstrap:{
             deps:["jquery"]
+        },
+        uploadify:{
+            deps:["jquery"]
         }
     }
+
 });
 //菜单切换  点击菜单项，完成内容的切换
 
-require(["jquery","teacher","sort","course","bootstrap","cookie"],function($,teacher,sort,course){
+require(["jquery","teacher","sort","course","addCourse","bootstrap","cookie","uploadify"],function($,teacher,sort,course,addCourse){
 
     //var JsonData = sessionStorage.getItem("data");
     var JsonData = $.cookie("JsonData");
@@ -49,7 +54,6 @@ require(["jquery","teacher","sort","course","bootstrap","cookie"],function($,tea
             }
         })
     })
-
     $(".list-group").on('click','a',function(){
         var value = $(this).attr('v');
         //console.log(value)
@@ -58,11 +62,10 @@ require(["jquery","teacher","sort","course","bootstrap","cookie"],function($,tea
                 teacher();
                 break;
             case "course":
-
                 course();
                 break;
             case "courseAdd":
-                $(".main").html("添加课程");
+                addCourse()
                 break;
             case "sort":
                 sort();
@@ -74,9 +77,6 @@ require(["jquery","teacher","sort","course","bootstrap","cookie"],function($,tea
         //点击换内容
 
         $(this).addClass("active").siblings().removeClass("active");
-
-
-
     })
 
     $(".list-group a[v=teacher]").trigger('click');

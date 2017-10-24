@@ -28,7 +28,6 @@ define([
                     sortAdd();
                 })
 
-
                 //±à¼­½²Ê¦
                 $(".panel").on("click",".btn-edit",function(){
                     var id = $(this).parent().attr("cg_id");
